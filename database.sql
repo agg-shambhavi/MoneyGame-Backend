@@ -1,11 +1,12 @@
 CREATE DATABASE moneygame;
+-- create extension if not exists "uuid-ossp";
 CREATE TABLE users(
     user_id uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,
-    first_name VARCHAR(255),
+    last_name VARCHAR(255) NOT NULL,
     registration_date DATE DEFAULT CURRENT_DATE,
     user_email VARCHAR(255) NOT NULL,
-    user_password VARCHAR(255) NOT NULL,
+    user_password VARCHAR(255) NOT NULL
 );
 CREATE TABLE nse_stocks(
     stock_symbol VARCHAR(255) NOT NULL UNIQUE PRIMARY KEY,
@@ -15,7 +16,7 @@ CREATE TABLE nse_stocks_rate(
     stock_rate_id BIGSERIAL PRIMARY KEY,
     stock_symbol VARCHAR(255) REFERENCES nse_stocks(stock_symbol) NOT NULL,
     on_date DATE DEFAULT CURRENT_DATE,
-    eod_price NUMERIC(7, 3) NOT NULL
+    eod_price NUMERIC(10, 3) NOT NULL
 );
 CREATE TABLE transactions(
     transaction_id BIGSERIAL PRIMARY KEY,
@@ -28,3 +29,9 @@ CREATE TABLE transactions(
 );
 COPY nse_stocks(stock_symbol, stock_name)
 FROM 'G:\Moneygame\utility\nse_stocks.csv' DELIMITER ',' CSV HEADER;
+COPY nse_stocks_rate(stock_symbol, eod_price, on_date)
+FROM 'G:\Moneygame\utility\nse_stocks_rate_17.csv' DELIMITER ',' CSV HEADER;
+COPY nse_stocks_rate(stock_symbol, eod_price, on_date)
+FROM 'G:\Moneygame\utility\nse_stocks_rate_18.csv' DELIMITER ',' CSV HEADER;
+COPY nse_stocks_rate(stock_symbol, eod_price, on_date)
+FROM 'G:\Moneygame\utility\nse_stocks_rate_17.csv' DELIMITER ',' CSV HEADER;
