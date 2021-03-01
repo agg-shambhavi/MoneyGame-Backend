@@ -13,6 +13,8 @@ app.use("/auth", require("./routes/jwtAuth"));
 
 app.use("/dashboard", require("./routes/dashboard"));
 
+app.use("/transaction", require("./routes/transactions"));
+
 app.listen(5000, () => {
     console.log(`Server is starting on port 5000`);
 });
