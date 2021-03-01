@@ -16,7 +16,7 @@ CREATE TABLE nse_stocks_rate(
     stock_rate_id BIGSERIAL PRIMARY KEY,
     stock_symbol VARCHAR(255) REFERENCES nse_stocks(stock_symbol) NOT NULL,
     on_date DATE DEFAULT CURRENT_DATE,
-    eod_price NUMERIC(10, 3) NOT NULL
+    eod_price NUMERIC(15, 4) NOT NULL
 );
 CREATE TABLE transactions(
     transaction_id BIGSERIAL PRIMARY KEY,
