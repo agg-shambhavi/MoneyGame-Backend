@@ -25,7 +25,7 @@ CREATE TABLE transactions(
     transaction_stock_rate_id BIGSERIAL REFERENCES nse_stocks_rate(stock_rate_id) NOT NULL,
     transaction_date DATE DEFAULT CURRENT_DATE,
     transaction_type VARCHAR(255) NOT NULL,
-    transaction_qty SMALLINT CHECK (transaction_qty > 0)
+    transaction_qty SMALLINT
 );
 COPY nse_stocks(stock_symbol, stock_name)
 FROM 'G:\Moneygame\utility\nse_stocks.csv' DELIMITER ',' CSV HEADER;
