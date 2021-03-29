@@ -8,14 +8,27 @@ module.exports = async (req, res, next) =>{
         const jwtToken = req.header("token");
         
         if (!jwtToken){
-            return res.status(401).json("Not authorized")
+            return res.status(403).send({auth : false, message : 'No token provided'});
+        }
+        else{
+            jwt.verify(jwtToken, process.env.JWT_SECRET,
+                (err , decoder) => {
+                    if (err)
+                        return res.status(500).send({auth : false, message: "Token authorization failed"});
+                    else{
+                        req.user = decoder.user;
+                        next();
+                    }
+                } 
+            )
+        
         }
 
-        const payload = jwt.verify(jwtToken, process.env.jwtSecret);
+        // const payload = jwt.verify(jwtToken, process.env.jwtSecret);
 
-        req.user = payload.user;
+        // req.user = payload.user;
 
-        next();
+        
 
 
     }
