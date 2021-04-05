@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../db");
 
-router.get("/stock_price", async (req, res) => {
+router.post("/stock_price", async (req, res) => {
     try {
         const { stock_symbol, date } = req.body;
         const user = await pool.query(
