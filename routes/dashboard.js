@@ -30,4 +30,18 @@ router.get("/portfolio", authorize, async (req, res) => {
   }
 });
 
+router.get("/sell-stocks", authorize, async (req, res) => {
+  try {
+    const user = await pool.query(
+      "select stock_symbol from transactions where transactions.user_id = $1 group by stock_symbol;",
+      [req.user] 
+    ); 
+    
+    res.json(user.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;
