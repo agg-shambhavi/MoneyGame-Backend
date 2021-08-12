@@ -1,7 +1,7 @@
-# MoneyGame: Backend
-API for the MoneyGame project
+# 📈💰 MoneyGame: Backend
+Backend for the MoneyGame project
 
-Implemented the following functionalities:
+## 🛠 Implemented the following functionalities:
 
 - Registration & Login
 - Returning a jwt-Token on Login/Registration
@@ -10,6 +10,7 @@ Implemented the following functionalities:
 - Selling Transaction
 - Viewing all transactions made by a user
 
+## 🎯 API Endpoints
 Following is a brief about routes of endpoints and their expected inputs:
 
 1. `/auth/register `: For registering a new user. <br>
@@ -29,3 +30,13 @@ Following is a brief about routes of endpoints and their expected inputs:
    Inputs: <br>
    `{ "stock_symbol": " AEGIS LOGIS ", "qty": 4, "date": "2021-2-18" }`
 7. `/transaction/all`: Endpoint for showing all transactions by the user. Uses authorize as middleware. Returns `stock_symbol, stock_name, transaction_date, qty, transaction_type, eod_price` of each transaction.
+
+## 👩‍🏭 Getting started with developement
+* Download the dependencies:
+```bash
+> npm install
+```
+* Start the developement server:
+```bash
+>  npm start
+```
