@@ -40,3 +40,5 @@ Following is a brief about routes of endpoints and their expected inputs:
 ```bash
 >  npm start
 ```
+## 📜 License
+This project is released under a free and open-source software license, Apache License 2.0 or later ([LICENSE](LICENSE) or https://www.apache.org/licenses/LICENSE-2.0). The documentation is also released under a free documentation license, namely the [GFDL v1.3](https://www.gnu.org/licenses/fdl-1.3.en.html) license or later.
